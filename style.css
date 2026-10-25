@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap');
+
+:root {
+  --blue: #20baff;
+  --yellow: #f6ed32;
+  --green: #57ff62;
+  --red: #ff394f;
+  --dark: #020812;
+
+  /* Real zombie photo from Pexels */
+  --zombie-image: url("https://images.pexels.com/photos/35659045/pexels-photo-35659045.jpeg?auto=compress&cs=tinysrgb&w=1600");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020812;
+  color: #f0f7ff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.game {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.screen {
+  display: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(22px, 5vw, 48px);
+  border: 1px solid var(--blue);
+  border-radius: 12px;
+  background: #03101f;
+  box-shadow: 0 0 28px #20baff35;
+  animation: appear 0.45s ease;
+}
+
+/* REAL PHOTO BACKGROUND */
+.screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--zombie-image);
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.25);
+  transform: scale(1.02);
+}
+
+/* Dark layer + blue, yellow and green neon */
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 24, 55, 0.78),
+      rgba(0, 5, 15, 0.89) 50%,
+      rgba(25, 40, 0, 0.70)
+    );
+  pointer-events: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.screen > * {
+  position: relative;
+}
+
+.screen::selection {
+  background: var(--green);
+  color: #000;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.top-label {
+  text-align: center;
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 28px;
+  text-shadow: 0 0 12px #57ff6270;
+}
+
+.eyebrow {
+  text-align: center;
+  color: var(--blue);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+h1, h2 {
+  text-align: center;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: clamp(29px, 6vw, 49px);
+  font-weight: 900;
+  text-shadow: 0 0 18px #20baff50;
+}
+
+h1 span, h2 span {
+  color: var(--yellow);
+  text-shadow: 0 0 15px #f6ed3260;
+}
+
+h2 {
+  font-size: clamp(18px, 4vw, 28px);
+}
+
+.subtitle {
+  color: #d0dfed;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.enter-icon, .yellow-btn {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 25px auto 12px;
+  padding: 17px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.enter-icon {
+  border: 2px solid var(--green);
+  background: rgba(0, 12, 10, 0.72);
+  color: var(--green);
+  font-size: 18px;
+  box-shadow: 0 0 18px #57ff6230;
+}
+
+.enter-icon:hover {
+  background: var(--green);
+  color: #031007;
+  box-shadow: 0 0 30px #57ff6270;
+  transform: translateY(-2px);
+}
+
+.yellow-btn {
+  border: 1px solid var(--yellow);
+  background: var(--yellow);
+  color: #06101a;
+}
+
+.yellow-btn:hover {
+  background: var(--green);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#passcode {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 28px auto 15px;
+  padding: 17px;
+  border: 1px solid var(--blue);
+  border-radius: 6px;
+  background: rgba(0, 8, 18, 0.9);
+  color: var(--green);
+  text-align: center;
+  font: 700 22px 'Orbitron', sans-serif;
+  letter-spacing: 8px;
+  outline: none;
+}
+
+#passcode:focus {
+  box-shadow: 0 0 18px #20baff60;
+}
+
+.question {
+  padding: 17px;
+  border-left: 3px solid var(--blue);
+  background: rgba(2, 13, 27, 0.88);
+  color: #edf7ff;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 11px 0;
+  padding: 14px;
+  border: 1px solid #20baff75;
+  border-radius: 6px;
+  background: rgba(1, 10, 21, 0.88);
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.option:hover {
+  border-color: var(--green);
+  background: rgba(0, 32, 32, 0.94);
+}
+
+.option:has(input:checked) {
+  border-color: var(--yellow);
+  box-shadow: 0 0 12px #f6ed3230;
+}
+
+.option input {
+  flex-shrink: 0;
+  margin-top: 5px;
+  accent-color: var(--green);
+}
+
+.message {
+  min-height: 24px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+.message.error {
+  color: var(--red);
+  text-shadow: 0 0 12px #ff394f60;
+}
+
+.message.success {
+  color: var(--green);
+  text-shadow: 0 0 12px #57ff6260;
+}
+
+.progress, .small {
+  text-align: center;
+  color: #b5cadb;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 24px;
+}
+
+.back-btn {
+  display: block;
+  margin: 18px auto;
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.danger {
+  color: var(--red);
+}
+
+.hurry {
+  color: var(--yellow);
+  font-size: clamp(55px, 12vw, 90px);
+  text-shadow: 0 0 28px #f6ed3270;
+  animation: pulse 0.8s infinite alternate;
+}
+
+.warning-line {
+  margin: 25px 0;
+  padding: 15px;
+  border: 1px solid var(--green);
+  background: rgba(0, 10, 8, 0.8);
+  color: var(--green);
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.035); }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px 7px;
+  }
+
+  .screen {
+    padding: 24px 15px;
+  }
+
+  .option {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+
+  .top-label {
+    letter-spacing: 2px;
+  }
+}
+/* Different background for every screen */
+
+#intro::before {
+  background-image: url("images/city.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#access::before {
+  background-image: url("images/access.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#question1::before {
+  background-image: url("images/virus.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#question2::before {
+  background-image: url("images/access.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#final::before {
+  background-image: url("images/final.jpg");
+  background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Last Chance for Humanity</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game">
+
+    <!-- SCREEN 1 -->
+    <section id="intro" class="screen active">
+      <div class="top-label">☣ BIOHAZARD ALERT ☣</div>
+      <p class="eyebrow">THE WORLD HAS FALLEN</p>
+
+      <h1>THIS IS THE LAST CHANCE FOR <span>HUMANITY</span></h1>
+
+      <p class="subtitle">
+        The infection is spreading. Humanity needs you.
+      </p>
+
+      <button class="enter-icon" onclick="showScreen('access')">
+        ☣ ENTER →
+      </button>
+
+      <p class="small">YOUR MISSION STARTS NOW</p>
+    </section>
+
+    <!-- SCREEN 2: CODE -->
+    <section id="access" class="screen">
+      <div class="top-label">☣ RESTRICTED ACCESS ☣</div>
+
+      <h2>ENTER THE <span>MORTBUS</span></h2>
+      <p class="subtitle">Enter the classified access code to continue.</p>
+
+      <form id="codeForm">
+        <input
+          id="passcode"
+          type="password"
+          inputmode="numeric"
+          maxlength="5"
+          placeholder="ENTER CODE"
+          autocomplete="off"
+          required
+        >
+
+        <button class="yellow-btn" type="submit">
+          UNLOCK ACCESS →
+        </button>
+      </form>
+
+      <p id="codeMessage" class="message" aria-live="polite"></p>
+
+      <button class="back-btn" onclick="showScreen('intro')">
+        ← BACK
+      </button>
+    </section>
+
+    <!-- SCREEN 3: VIROLOGY -->
+    <section id="question1" class="screen">
+      <div class="top-label">☣ MISSION 01 / VIROLOGY ☣</div>
+
+      <h2>🦠 QUESTION 01 — <span>VIROLOGY</span></h2>
+
+      <p class="question">
+        Viruses lack ribosomes and energy-producing systems,
+        making them dependent on host cells for viral replication.
+        This biological characteristic defines them as:
+      </p>
+
+      <form id="quiz1">
+        <label class="option">
+          <input type="radio" name="q1" value="A">
+          <span>A. Facultative intracellular parasites</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="B">
+          <span>B. Obligate intracellular parasites</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="C">
+          <span>C. Free-living microorganisms</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q1" value="D">
+          <span>D. Prokaryotic organisms</span>
+        </label>
+
+        <button class="yellow-btn" type="submit">
+          CONFIRM ANSWER
+        </button>
+      </form>
+
+      <p id="message1" class="message" aria-live="polite"></p>
+      <p class="progress">MISSION 01 — 02</p>
+    </section>
+
+    <!-- SCREEN 4: VACCINATION -->
+    <section id="question2" class="screen">
+      <div class="top-label">☣ MISSION 02 / IMMUNITY ☣</div>
+
+      <h2>💉 <span>VACCINATION</span></h2>
+
+      <p class="question">
+        How does vaccination generally protect an individual
+        against a future infection?
+      </p>
+
+      <form id="quiz2">
+        <label class="option">
+          <input type="radio" name="q2" value="A">
+          <span>A. By eliminating all pathogens from the environment</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="B">
+          <span>B. By providing permanent, non-specific inflammation</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="C">
+          <span>C. By stimulating an adaptive immune response and immunological memory</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="q2" value="D">
+          <span>D. By preventing white blood cells from interacting with pathogens</span>
+        </label>
+
+        <button class="yellow-btn" type="submit">
+          CONFIRM ANSWER
+        </button>
+      </form>
+      <p id="message2" class="message" aria-live="polite"></p>
+      <p class="progress">MISSION 02 — 02</p>
+    </section>
+
+    <!-- SCREEN 5: FINAL -->
+    <section id="final" class="screen final-screen">
+      <div class="top-label danger">☣ CRITICAL ALERT ☣</div>
+
+      <p class="eyebrow">EMERGENCY TRANSMISSION</p>
+      <h1 class="hurry">HURRY!</h1>
+      <h2>THERE'S NO TIME LEFT!</h2>
+
+      <p class="subtitle">
+        The infection is spreading. Humanity is counting on you.
+      </p>
+
+      <div class="warning-line">
+        ⚠ TIME IS RUNNING OUT ⚠
+      </div>
+
+      <button class="enter-icon" onclick="showScreen('intro')">
+        ↻ PLAY AGAIN
+      </button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
